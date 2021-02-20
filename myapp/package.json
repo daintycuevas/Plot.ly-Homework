@@ -1,0 +1,22 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "plotly express--CORS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daintycuevas/Plot.ly-Homework.git"
+  },
+  "author": "dc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daintycuevas/Plot.ly-Homework/issues"
+  },
+  "homepage": "https://github.com/daintycuevas/Plot.ly-Homework#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
