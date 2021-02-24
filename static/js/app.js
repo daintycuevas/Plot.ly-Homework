@@ -1,6 +1,8 @@
-// Select tbody for samples.json
-var tbody = d3.select("#sample-metadata");
+// * index 0 - names
+// * index 1 - metadata
+// * index 2 - samples
 
+  
 d3.json("static/js/samples.json").then(sampleData => {
   console.log(sampleData)
 
@@ -12,33 +14,29 @@ d3.json("static/js/samples.json").then(sampleData => {
 
   var samples = Object.values(sampleData)[2];
   console.log(samples);
+  });
 
-    
-    // var idNames = data.forEach(names => console.log(`${names.data}`));
+  function plotData(id) {
+    d3.json("static/js/samples.json").then(sampleData => {
+      console.log(sampleData)
 
-    // var metaData = data.map(metadata => metadata.data);
-    // sampleMetadata.push(metaData);
+      var wfreq = sampleData.metadata.map(d => d.wfreq)
+      console.log(wfreq)
 
-    // var sampleData = data.map(samples => samples.data);
-    // dataSamples.push(sampleData);
-  
-})
+      //values for the bar chart
+      var sample_values = sampleData.samples.filter(s => s.id)
+
+      //labels for the bar chart
+      var otu_ids = 
+
+      //hovertext for the chart
+      var otu_labels =
 
 
-    // item += data;
-    // sampleNames.push(names.data[1]);
-    // sampleMetadata.push(metadata.data);
-    // dataSamples.push(samples.data);
-    
 
-  // var dataDropdown = d3.select("#selDataset")
-  //   .append("option")
-  //   .data()
-  // })
+// var sampleData = data.data;
 
-  // var names = 
 
-  // var dataDropdown = d3.select("#selDataset")
-  //   .append("option")
-  //   .data()
+// var dropdownMenu = d3.select("#selDataset");
 
+// var dataset = dropdownMenu.property("value");
