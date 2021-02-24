@@ -17,7 +17,12 @@ d3.json("static/js/samples.json").then(sampleData => {
   });
 
 
-function plotData(id) {
+function getSubject(id) {
+  d3.json("static/js/samples.json").then(sampleData => {
+    console.log(sampleData)
+}
+
+function plotData(sample) {
 
   d3.json("static/js/samples.json").then(sampleData => {
     console.log(sampleData)
@@ -42,10 +47,22 @@ function plotData(id) {
   //  PLOT
   //=========
 
-
   //create trace 
-  
+  var trace = {
+    x: sampleValues
+    y: otuID
+    text: otuLabel
+    type: "bar"
+    orientation: "h"
+  }
 
   //create data 
+  var data = [trace]
 
-  //create layout
+  //create layout for bar chart
+  var layout = {
+    xaxis: "Top 10 OTU"
+    }
+  };
+
+  Plotly.newPlot("bar", data, layout);
