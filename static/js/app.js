@@ -23,9 +23,10 @@ d3.json("static/js/samples.json").then(sampleData => {
       var wfreq = sampleData.metadata.map(d => d.wfreq)
       console.log(wfreq)
 
-      //values for the bar chart
-      var sample_values = sampleData.samples.filter(s => s.id)
-
+      //filtered id values for the bar chart
+      var sample_values = sampleData.samples.filter(s => s.id.toString() === id)[0];
+      console.log(sample_values)
+      
       //labels for the bar chart
       var otu_ids = 
 
