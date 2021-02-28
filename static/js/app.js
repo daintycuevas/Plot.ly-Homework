@@ -35,7 +35,7 @@ function plotData(sample) {
       var id_values = sampleData.otu_ids.slice(0, 10);
 
       //labels for the bar chart
-      var otu_ids = idValues.map(d => "OTU" + d);
+      var otu_ids = id_values.map(d => "OTU" + d);
 
       //hovertext for the chart
       var labels = sampleData.otu_labels.slice(0, 10);
@@ -45,26 +45,37 @@ function plotData(sample) {
       console.log(`ID values: ${id_values}`);
 
 
-  //========= 
-  //  PLOT
-  //=========
+      //========= 
+      //  PLOT
+      //=========
 
-  //create trace 
-  var trace = {
-    x: sampleValues
-    y: otuID
-    text: otuLabel
-    type: "bar"
-    orientation: "h"
-  }
+      //create trace 
+      var trace = {
+        x: sample_values,
+        y: otu_ids,
+        text: labels,
+        type: "bar",
+        orientation: "h"
+      };
 
-  //create data 
-  var data = [trace]
+      //create data 
+      var data = [trace];
 
-  //create layout for bar chart
-  var layout = {
-    xaxis: "Top 10 OTU"
-    }
-  };
+      //create layout for bar chart
+      var layout = {
+        title: "Top 10 OTU",
+        yaxis:{
+          tickmode:"linear"
+        },
+        margin: {
+          l: 100, 
+          r: 100, 
+          t: 30, 
+          b: 20
+        }
+      };
 
-  Plotly.newPlot("bar", data, layout);
+      Plotly.newPlot("bar", data, layout);
+  })
+  
+}
