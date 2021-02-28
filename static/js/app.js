@@ -54,7 +54,7 @@ function plotData(id) {
       var traceBar = {
         x: sample_values,
         y: otu_ids,
-        text: labels,
+        // text: labels,
         type: "bar",
         orientation: "h"
       };
@@ -97,7 +97,7 @@ function plotData(id) {
       var layout1 = {
         title: "OTU ID", 
         height: 500, 
-        width: 1000
+        width: 1500
       };
 
       Plotly.newPlot("bubble", data1, layout1);
@@ -112,7 +112,7 @@ function plotData(id) {
       //create data
       var data2 = [tracePie];
 
-      Plotly.newPlot("gauge", data)
+      Plotly.newPlot("gauge", data2)
   });
 }
 
