@@ -28,6 +28,7 @@ function plotData(id) {
   d3.json("static/js/samples.json").then(sampleData => {
     console.log(sampleData)
 
+      //filter sample values by id
       var samples = sampleData.samples.filter(s => s.id.toString() === id)[0];
 
       //values for the bar chart
@@ -39,7 +40,7 @@ function plotData(id) {
       var otu_ids = id_values.map(d => "OTU" + d);
 
       //hovertext for the chart
-      // var labels = sampleData.otu_labels;
+      var labels = samples.otu_labels;
 
       console.log(`OTU id: ${otu_ids}`);
       console.log(`Sample values: ${sample_values}`);
@@ -50,11 +51,11 @@ function plotData(id) {
       //  PLOT
       //=========
 
-      //create trace 
+      //create trace for bar chart
       var traceBar = {
         x: sample_values,
         y: otu_ids,
-        // text: labels,
+        text: labels,
         type: "bar",
         orientation: "h"
       };
@@ -142,8 +143,8 @@ function getData(id) {
 
     sampleInfo.html("");
 
-    Object.entries(result).forEach(key => {
-      sampleInfo.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");
+    Object.entries(result).forEach(value => {
+      sampleInfo.append("h5").text(value[0].toUpperCase() + ": " + value[1] + "\n");
     });
   });
 }
