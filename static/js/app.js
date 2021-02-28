@@ -19,28 +19,30 @@ d3.json("static/js/samples.json").then(sampleData => {
 
 function getSubject(id) {
   d3.json("static/js/samples.json").then(sampleData => {
-    console.log(sampleData)
-}
+    console.log(sampleData);
+  })
 
 function plotData(sample) {
 
   d3.json("static/js/samples.json").then(sampleData => {
     console.log(sampleData)
 
-  var wfreq = sampleData.metadata.map(d => d.wfreq)
-    console.log(wfreq)
+      var samples = sampleData.samples.filter(s => s.id.toString() === id)
 
-  var samples = sampleData.samples.filter(s => s.id.toString() === id)[0];
-    console.log(samples)
+      //values for the bar chart
+      var sample_values = sampleData.sample_values.slice(0, 10);
 
-  //filtered id values for the bar chart
-  var sampleValues = samples.sample_values.slice(0, 10)
+      var id_values = sampleData.otu_ids.slice(0, 10);
 
-  //labels for the bar chart
-  var otuID = samples.otu_ids.slice(0, 10);
+      //labels for the bar chart
+      var otu_ids = idValues.map(d => "OTU" + d);
 
-  //hovertext for the chart
-  var otuLabel = sampleData.otu_labels.slice(0, 10);
+      //hovertext for the chart
+      var labels = sampleData.otu_labels.slice(0, 10);
+
+      console.log(`OTU id: ${out_ids}`);
+      console.log(`Sample values: ${sample_values}`);
+      console.log(`ID values: ${id_values}`);
 
 
   //========= 
