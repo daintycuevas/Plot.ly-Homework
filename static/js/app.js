@@ -39,7 +39,7 @@ function plotData(id) {
       var otu_ids = id_values.map(d => "OTU" + d);
 
       //hovertext for the chart
-      // var labels = sampleData.otu_labels.slice(0, 10);
+      // var labels = sampleData.otu_labels;
 
       console.log(`OTU id: ${otu_ids}`);
       console.log(`Sample values: ${sample_values}`);
@@ -97,22 +97,32 @@ function plotData(id) {
       var layout1 = {
         title: "OTU ID", 
         height: 500, 
-        width: 1500
+        width: 1300
       };
 
       Plotly.newPlot("bubble", data1, layout1);
 
-      //create pie chart
-      var tracePie = {
-        labels: otu_ids, 
-        values: sample_values, 
-        type: "pie"
+      //create gauge chart
+      var traceGauge = {
+        // labels: otu_ids, 
+        value: sample_values, 
+        type: "indicator",
+        mode: "gauge+number"
       }
 
       //create data
-      var data2 = [tracePie];
+      var data2 = [traceGauge];
 
-      Plotly.newPlot("gauge", data2)
+      var layout2 = {
+        width: 500, 
+        height: 500, 
+        margin: {
+          t: 0, 
+          b: 0
+        }
+      };
+
+      Plotly.newPlot("gauge", data2, layout2);
   });
 }
 
@@ -126,7 +136,7 @@ function getData(id) {
     console.log(metadata)
 
     //filter metadata
-    var result = metadata.filter(meta => meta.id.toString() === id);
+    var result = metadata.filter(meta => meta.id.toString() === id)[0];
 
     var sampleInfo = d3.select("#sample-metadata");
 
