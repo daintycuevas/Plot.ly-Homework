@@ -105,7 +105,7 @@ function plotData(id) {
 
       //create gauge chart
       var traceGauge = {
-        // labels: otu_ids, 
+        domain: { x: [0, 1], y: [0, 1] },
         value: sample_values, 
         type: "indicator",
         mode: "gauge+number"
